@@ -1,0 +1,4 @@
+claim_id,claim_text,claim_type,reconstruction_id,manual_evidence_grade,notes
+C_beta_both,Treatments alter bacterial and fungal composition,effect,R16_phylum,,Direction is positive for R2
+C_alpha_null,Shannon diversity has no treatment difference,null,R_alpha,,Null claim
+C_reference_rank,AEFP is closest to the natural reference in ITS,ranking,R_ITS_phylum,,Ranking claim

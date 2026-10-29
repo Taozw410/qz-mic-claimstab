@@ -1,0 +1,8 @@
+claim_id,domain,outcome,contrast,pipeline,sample_set,estimate,p_value,direction,rank,testable,source,notes
+C_beta_both,16S,beta,composition,OTU,primary15,0.256,0.588,positive,,true,fixture,
+C_beta_both,16S,beta,composition,ASV-phylum,primary15,0.256,0.582,positive,,true,fixture,
+C_beta_both,16S,beta,composition,ASV,primary15,0.415,0.0002,positive,,true,fixture,
+C_alpha_null,ITS,shannon,composition,OTU,primary15,,,not_applicable,,false,fixture,No p value supplied
+C_reference_rank,ITS,reference_rank,AEFP,OTU,primary15,0.188,0.104,not_applicable,1,true,fixture,
+C_reference_rank,ITS,reference_rank,AEFP,ASV-phylum,primary15,0.213,0.176,not_applicable,1,true,fixture,
+C_reference_rank,ITS,reference_rank,AEFP,ASV,primary15,0.615,0.871,not_applicable,1,true,fixture,

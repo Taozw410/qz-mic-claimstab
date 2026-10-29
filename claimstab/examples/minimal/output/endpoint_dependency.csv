@@ -1,0 +1,4 @@
+﻿claim_id,domain,outcome,contrast,sample_set,n_results,n_testable,pipelines,estimate_min,estimate_max,p_min,p_max,direction_values,direction_stability,significant_count,non_significant_count,significance_stability,rank_values,rank_stability,dependency_level
+C_alpha_null,ITS,shannon,composition,primary15,1,0,OTU,,,,,,not_applicable,0,0,insufficient,,not_applicable,not_evaluable
+C_beta_both,16S,beta,composition,primary15,3,3,ASV;ASV-phylum;OTU,0.256,0.415,0.0002,0.588,positive,stable,1,2,mixed,,not_applicable,moderate
+C_reference_rank,ITS,reference_rank,AEFP,primary15,3,3,ASV;ASV-phylum;OTU,0.188,0.615,0.104,0.871,,not_applicable,0,3,stable_null,1,stable,low

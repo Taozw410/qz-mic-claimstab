@@ -1,0 +1,4 @@
+﻿reconstruction_id,domain,layer,metric,value,threshold,status,source,notes
+R16_phylum,16S,phylum,mean_common_bray,0.027,0.10,stable,fixture,Example value
+R_alpha,Both,alpha,sample_rank_correlation,0.90,0.80,stable,fixture,Example value
+R_ITS_phylum,ITS,phylum,mean_common_bray,0.052,0.10,partial,fixture,Example status

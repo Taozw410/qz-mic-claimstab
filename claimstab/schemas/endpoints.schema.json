@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "claimstab endpoint result row",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "domain",
+    "outcome",
+    "contrast",
+    "pipeline",
+    "sample_set",
+    "testable"
+  ],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "outcome": {"type": "string", "minLength": 1},
+    "contrast": {"type": "string", "minLength": 1},
+    "pipeline": {"type": "string", "minLength": 1},
+    "sample_set": {"type": "string", "minLength": 1},
+    "estimate": {"type": ["number", "string"]},
+    "p_value": {"type": ["number", "string"], "minimum": 0, "maximum": 1},
+    "direction": {
+      "type": "string",
+      "enum": ["positive", "negative", "none", "not_applicable"]
+    },
+    "rank": {"type": ["integer", "string"]},
+    "testable": {"type": ["boolean", "string"]},
+    "source": {"type": "string"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

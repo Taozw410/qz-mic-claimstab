@@ -1,0 +1,8 @@
+"claim_id","claim_text","claim_type","reconstruction_id","manual_evidence_grade","notes"
+"GP_alpha_Observed","Observed richness differs by sample type","difference","R_aggregation","",""
+"GP_alpha_Shannon","Shannon diversity differs by sample type","difference","R_aggregation","",""
+"GP_alpha_Simpson","Simpson diversity differs by sample type","difference","R_aggregation","",""
+"GP_beta_Bray","Bray-Curtis composition differs by sample type","difference","R_aggregation","",""
+"GP_beta_Aitchison","Aitchison composition differs by sample type","difference","R_aggregation","",""
+"GP_mock_Bray","Mock communities differ from environmental samples on Bray-Curtis","difference","R_aggregation","",""
+"GP_mock_Aitchison","Mock communities differ from environmental samples on Aitchison","difference","R_aggregation","",""

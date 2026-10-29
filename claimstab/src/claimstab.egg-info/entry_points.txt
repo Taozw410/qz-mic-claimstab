@@ -1,0 +1,2 @@
+[console_scripts]
+claimstab = claimstab.cli:main

@@ -1,0 +1,5 @@
+"reconstruction_id","domain","layer","metric","value","threshold","status","source","notes"
+"GLOBALPATTERNS_PERM","GlobalPatterns","permutation_control","data_layer_unchanged",0,0,"stable","GlobalPatterns public dataset","Only group labels were permuted; data-layer totals were unchanged."
+"ENTEROTYPE_PERM","enterotype","permutation_control","data_layer_unchanged",0,0,"stable","enterotype public dataset","Only group labels were permuted; data-layer totals were unchanged."
+"SOILREP_PERM","soilrep","permutation_control","data_layer_unchanged",0,0,"partial","soilrep public dataset","Only group labels were permuted; data-layer totals were unchanged."
+"ATLAS1006_PERM","atlas1006","permutation_control","data_layer_unchanged",0,0,"stable","atlas1006 public dataset","Only group labels were permuted; data-layer totals were unchanged."

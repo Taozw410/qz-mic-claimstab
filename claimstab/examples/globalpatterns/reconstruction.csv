@@ -1,0 +1,4 @@
+"reconstruction_id","domain","layer","metric","value","threshold","status","source","notes"
+"R_aggregation","16S","OTU","sample_total_difference_vs_OTU",0,"0","stable","GlobalPatterns via phyloseq","Reference layer"
+"R_aggregation","16S","Genus","sample_total_difference_vs_OTU",0,"0","stable","GlobalPatterns via phyloseq","All reads retained; missing genus assigned Unclassified"
+"R_aggregation","16S","Phylum","sample_total_difference_vs_OTU",0,"0","stable","GlobalPatterns via phyloseq","All reads retained; missing phylum assigned Unclassified"

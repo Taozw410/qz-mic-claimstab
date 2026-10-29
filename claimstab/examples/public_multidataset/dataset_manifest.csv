@@ -1,0 +1,5 @@
+"dataset","source_package","study","citation","doi","platform","samples_used","contrast"
+"GlobalPatterns","phyloseq","Global patterns of 16S rRNA diversity","Caporaso et al. 2011 PNAS 108:4516-4522","10.1073/pnas.1000080107","Illumina 16S",26,"SampleType; Mock_vs_environment"
+"enterotype","phyloseq","Enterotypes of the human gut microbiome","Arumugam et al. 2011 Nature 473:174-180","10.1038/nature09944","mixed sequencing genus profiles",280,"SeqTech; all samples vs balanced 41 per technology"
+"soilrep","phyloseq","Reproducibility of soil microbiome data","Zhou et al. 2011 ISME Journal 5:1303-1313","10.1038/ismej.2011.11","454 16S",24,"Warmed and Clipped; technical replicates aggregated to 24 communities"
+"atlas1006","microbiome","Tipping elements of the human intestinal ecosystem","Lahti et al. 2014 Nature Communications 5:4344","10.1038/ncomms5344","HITChip genus/family/phylum profiles",1006,"BMI and sex; baseline time 0 only"

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "claimstab claims manifest",
+  "type": "object",
+  "required": ["claim_id", "claim_text", "claim_type", "reconstruction_id"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "claim_text": {"type": "string", "minLength": 1},
+    "claim_type": {
+      "type": "string",
+      "enum": ["effect", "difference", "null", "ranking", "not_verifiable"]
+    },
+    "reconstruction_id": {"type": "string", "minLength": 1},
+    "manual_evidence_grade": {
+      "type": "string",
+      "enum": ["", "strong", "moderate", "descriptive", "not_supported", "not_verifiable"]
+    },
+    "manual_override_reason": {"type": "string"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

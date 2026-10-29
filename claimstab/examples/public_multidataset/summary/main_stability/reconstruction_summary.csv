@@ -1,0 +1,10 @@
+﻿reconstruction_id,domain,layer,metric,value,threshold,status,source,notes
+GP_AGG,GlobalPatterns,OTU_to_phylum,sample_total_difference,0,0,stable,GlobalPatterns public dataset,OTU reference layer
+GP_AGG,GlobalPatterns,Genus,sample_total_difference,0,0,stable,GlobalPatterns public dataset,Genus aggregation
+GP_AGG,GlobalPatterns,Phylum,sample_total_difference,0,0,stable,GlobalPatterns public dataset,Phylum aggregation
+EN_FILTER,enterotype,Genus_filtered,sample_total_difference,0.80526766,1e-8,partial,enterotype public dataset,"Exclude -1, Bacteria and missing genus labels"
+SOIL_RECON,soilrep,OTU,sample_total_difference,0,0,partial,soilrep public dataset,Reference; beta sensitivity includes 10% prevalence filtering
+SOIL_RECON,soilrep,OTUprev10,sample_total_difference,2135,0,partial,soilrep public dataset,Prevalence filtering changes sample totals
+ATLAS_AGG,atlas1006,Phylum,sample_total_difference,0,0,stable,atlas1006 public dataset,HITChip rank aggregation
+ATLAS_AGG,atlas1006,Family,sample_total_difference,0,0,stable,atlas1006 public dataset,HITChip rank aggregation
+ATLAS_AGG,atlas1006,Genus,sample_total_difference,0,0,stable,atlas1006 public dataset,Reference HITChip genus layer

@@ -1,0 +1,7 @@
+﻿reconstruction_id,domain,layer,metric,value,threshold,status,source,notes
+R16_phylum,16S,phylum,mean_common_bray,0.0273,<=0.10,stable,sample_level_old_vs_current_concordance.csv,max=0.0346; mean_spearman=0.971
+RITS_phylum,ITS,phylum,mean_common_bray,0.0517,<=0.10,partial,sample_level_old_vs_current_concordance.csv,max=0.3067; one classification-sensitive sample
+R16_alpha,16S,alpha,sample_rank_spearman,0.589-0.889,not thresholded,partial,alpha_pipeline_concordance.csv,Observed and Shannon ranks moderately concordant
+RITS_alpha,ITS,alpha,sample_rank_spearman,0.659-0.975,not thresholded,partial,alpha_pipeline_concordance.csv,Observed ranks less concordant than Shannon/Simpson
+R_LEfSe,16S+ITS,DA,input_availability,,required files present,not_available,材料完整性/materials_inventory.csv,OTU count matrix and full LEfSe output absent
+R_qPCR,16S+ITS,absolute abundance,matched Cq availability,,required files present,not_available,QZ_mic_master_crosswalk.xlsx,"No matched Cq, standard curve or copy number"

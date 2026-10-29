@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "claimstab reconstruction audit row",
+  "type": "object",
+  "required": ["reconstruction_id", "domain", "layer", "metric", "status"],
+  "properties": {
+    "reconstruction_id": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "layer": {"type": "string", "minLength": 1},
+    "metric": {"type": "string", "minLength": 1},
+    "value": {"type": ["number", "string"]},
+    "threshold": {"type": ["number", "string"]},
+    "status": {
+      "type": "string",
+      "enum": ["stable", "partial", "unstable", "not_available"]
+    },
+    "source": {"type": "string"},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false
+}

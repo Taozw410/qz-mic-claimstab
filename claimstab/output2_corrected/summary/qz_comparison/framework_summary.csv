@@ -1,0 +1,14 @@
+﻿dataset,framework,call,count
+unspecified,claimstab,descriptive,2
+unspecified,claimstab,moderate,5
+unspecified,claimstab,not_supported,14
+unspecified,claimstab,not_verifiable,2
+unspecified,claimstab,supported,5
+unspecified,majority,ambiguous,1
+unspecified,majority,not_evaluable,2
+unspecified,majority,not_supported,3
+unspecified,majority,supported,8
+unspecified,strict,contradicted,2
+unspecified,strict,mixed,5
+unspecified,strict,not_evaluable,2
+unspecified,strict,supported,5

@@ -18,7 +18,7 @@ from docx.shared import Cm, Inches, Pt, RGBColor
 
 ROOT = Path(__file__).resolve().parent.parent
 MASTER = ROOT / "05_稿件" / "10_MASTER_draft_en.md"
-PACKAGE = ROOT / "投稿包_JMM_2026-10-29"
+PACKAGE = ROOT / "投稿包_JMM_2026-10-30"
 
 MANUSCRIPT_DIR = PACKAGE / "01_Manuscript"
 TITLE_DIR = PACKAGE / "02_Title_Page"
@@ -667,7 +667,7 @@ def build_cover_letter():
     title = doc.add_paragraph(style="Title")
     run = title.add_run("Cover letter")
     set_font(run, "Arial", 20, bold=True)
-    add_label_value(doc, "Date", "29 October 2026")
+    add_label_value(doc, "Date", "30 October 2026")
     add_label_value(doc, "To", "The Editors, Journal of Microbiological Methods")
 
     paragraphs = [
@@ -901,15 +901,16 @@ Before submission:
         encoding="utf-8",
     )
 
+    manifest_path = AUDIT_DIR / "Submission_Package_Manifest.md"
     files = sorted(
         path
         for path in PACKAGE.rglob("*")
-        if path.is_file() and path.name != "投稿文件清单.md"
+        if path.is_file() and path != manifest_path
     )
     lines = [
         "# JMM submission package manifest",
         "",
-        "Generated 29 October 2026.",
+        "Generated 30 October 2026.",
         "",
         "| File | Purpose | Size | SHA256 |",
         "| --- | --- | ---: | --- |",
@@ -929,7 +930,7 @@ Before submission:
         lines.append(
             f"| `{relative}` | {purpose} | {path.stat().st_size:,} | `{digest}` |"
         )
-    (AUDIT_DIR / "Submission_Package_Manifest.md").write_text(
+    manifest_path.write_text(
         "\n".join(lines) + "\n",
         encoding="utf-8",
     )

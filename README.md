@@ -32,6 +32,9 @@ python -m claimstab --version
 
 The `v0.3.0` GitHub release provides wheel and source archives.
 
+Archive:
+<https://github.com/Taozw410/qz-mic-claimstab/releases/tag/v0.3.0>
+
 ## Data
 
 The analysis-ready data and derived results are maintained at:

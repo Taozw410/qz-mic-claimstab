@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite this software using the metadata below and the permanent archive DOI once assigned."
+title: "claimstab and QZ microbiome reproducibility analysis"
+type: software
+authors:
+  - name: "The QZ Microbiome Reanalysis Authors"
+date-released: 2026-10-29
+version: "0.3.0"
+license: MIT
+repository-code: "https://github.com/Taozw410/qz-mic-claimstab"
+url: "https://github.com/Taozw410/qz-mic-claimstab"
+keywords:
+  - claim stability
+  - multiverse analysis
+  - reproducibility
+  - microbiome
+  - amplicon sequencing

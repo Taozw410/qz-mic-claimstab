@@ -331,6 +331,9 @@ def main():
                 "guangxixiejian@gxust.edu.cn",
                 "489486943@qq.com",
                 "0000-0003-0310-748X",
+                "ZiWei Tao",
+                "Jian Xie",
+                "Fan Yang",
             )
         ),
         "manuscript_has_no_placeholders": not any(
@@ -391,7 +394,10 @@ def main():
             "TELEPHONE REQUIRED" not in title_text
             and re.search(r"Telephone:\s*\+?[0-9][0-9 ()-]{6,}", title_text)
             is not None
-        )
+        ),
+        "anonymous_review_data_link": not (
+            "github.com/Taozw410/" in manuscript_text
+        ),
     }
 
     self_generated = {REPORT, JSON_REPORT, MANIFEST}

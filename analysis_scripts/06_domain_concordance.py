@@ -9,7 +9,7 @@ from scipy.spatial import procrustes
 from scipy.stats import spearmanr
 
 
-ROOT = Path("C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2")
+ROOT = Path("C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2")
 OUT = ROOT / "out" / "domain_concordance"
 OUT.mkdir(parents=True, exist_ok=True)
 RNG_SEED = 20261023

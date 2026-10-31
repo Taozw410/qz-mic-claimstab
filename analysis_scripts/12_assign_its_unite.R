@@ -22,7 +22,7 @@ reference_fasta <- get_arg(
 )
 output_dir <- get_arg(
   "--output-dir",
-  "C:/Users/hthome/AppData/Local/Temp/qz_mic_its_unite"
+  "C:/Users/<local-user>/AppData/Local/Temp/qz_mic_its_unite"
 )
 threads <- as.integer(get_arg("--threads", "8"))
 min_boot <- as.integer(get_arg("--min-boot", "50"))

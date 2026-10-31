@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-ROOT = Path("C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2/out/asv_analysis")
-OUT = Path("C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2/out/figures")
+ROOT = Path("C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2/out/asv_analysis")
+OUT = Path("C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2/out/figures")
 OUT.mkdir(parents=True, exist_ok=True)
 
 ORDER = ["As", "AFP", "AEFP", "BP", "Natural"]

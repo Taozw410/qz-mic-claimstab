@@ -434,6 +434,13 @@ def main():
         "accessibility_counts": a11y_reports,
         "technical_checks": technical_checks,
         "author_action_checks": author_action_checks,
+        "visual_render": {
+            "status": "NOT COMPLETED",
+            "reason": (
+                "LibreOffice is unavailable and the local WPS review window "
+                "did not expose a capturable document canvas."
+            ),
+        },
         "overall_status": (
             "PASS"
             if all(technical_checks.values()) and all(author_action_checks.values())
@@ -480,6 +487,15 @@ def main():
 
     lines.extend(
         [
+            "",
+            "## Manual visual verification",
+            "",
+            "- Status: **NOT COMPLETED**.",
+            "- LibreOffice is unavailable, and the local WPS review window did",
+            "  not expose a capturable document canvas during this audit.",
+            "- Complete one final page-by-page review in Word or WPS before",
+            "  submission, focusing on table page breaks and the landscape",
+            "  supplementary table.",
             "",
             "- Enter the prepared competing-interest, funding, CRediT, and",
             "  generative-AI statements in Elsevier's declarations tool.",

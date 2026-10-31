@@ -41,6 +41,40 @@ CODE_RELEASE_URL = (
     "https://github.com/Taozw410/qz-mic-claimstab/releases/tag/v0.3.0"
 )
 
+AUTHORS = [
+    ("ZiWei Tao", "a", "taozw@gxust.edu.cn", "0000-0003-0310-748X"),
+    ("Jian Xie", "a", "guangxixiejian@gxust.edu.cn", ""),
+    ("Fan Yang", "b", "489486943@qq.com", ""),
+]
+
+AFFILIATIONS = {
+    "a": (
+        "Guangxi University of Science and Technology, Guangxi Colleges and "
+        "Universities Key Laboratory of Intelligent Computing and Distributed "
+        "Information Processing, 2 Wenchang Road, Chengzhong District, "
+        "Liuzhou, Guangxi 545006, China"
+    ),
+    "b": (
+        "Zhejiang University of Water Resources and Electric Power, 508 No. 2 "
+        "Street, Xiasha Higher Education Park, Qiantang District, Hangzhou, "
+        "Zhejiang 310018, China"
+    ),
+}
+
+COI_STATEMENT = (
+    "The authors declare that they have no known competing financial interests "
+    "or personal relationships that could have appeared to influence the work "
+    "reported in this paper."
+)
+
+AI_STATEMENT = (
+    "Generative AI tools were used to assist with language editing and "
+    "translation during the preparation of this manuscript. All AI-assisted "
+    "output was carefully reviewed, verified, and edited by the authors, who "
+    "take full responsibility for the accuracy, originality, and integrity of "
+    "the content."
+)
+
 JMM_ABSTRACT = """
 Microbiome conclusions often depend on incompletely reported preprocessing and
 analytical choices. We developed claimstab, a four-component framework that
@@ -393,9 +427,10 @@ def build_jmm_markdown(blocks: dict[str, list[str]]) -> tuple[str, str]:
                 "The analysis-ready QZ amplicon data, sample metadata, derived "
                 "results, and SHA256 manifest are available in the versioned "
                 f"data release at {DATA_RELEASE_URL}. The four public datasets "
-                "are identified in Section 2 and in the reference list. A "
-                "permanent archive DOI should be inserted when institutional "
-                "or journal policy requires one."
+                "are identified in Section 2 and in the reference list. Raw "
+                "sequencing reads are available from the corresponding author "
+                "on reasonable request because the original sequencing archive "
+                "did not provide a stable public accession."
             ),
             "",
             (
@@ -403,33 +438,37 @@ def build_jmm_markdown(blocks: dict[str, list[str]]) -> tuple[str, str]:
                 f"in the versioned code release at {CODE_RELEASE_URL}. The "
                 "release includes the installable wheel, source distribution, "
                 "complete analysis scripts, schemas, tests, example inputs, and "
-                "benchmark outputs under the MIT License. A permanent archive "
-                "DOI should be inserted when institutional or journal policy "
-                "requires one."
+                "benchmark outputs under the MIT License."
             ),
             "",
             "## 7. Declarations",
             "",
-            "**Funding.** [AUTHOR TO COMPLETE BEFORE SUBMISSION]",
+            "**Funding.** This research did not receive any specific grant from "
+            "funding agencies in the public, commercial, or not-for-profit "
+            "sectors.",
+            "",
+            f"**Declaration of competing interest.** {COI_STATEMENT}",
             "",
             (
-                "**Declaration of competing interest.** The authors must complete "
-                "the Elsevier declarations tool. [AUTHOR TO CONFIRM BEFORE SUBMISSION]"
-            ),
-            "",
-            (
-                "**CRediT author statement.** The completed statement is supplied "
-                "as a separate submission file."
+                "**CRediT author statement.** ZiWei Tao: Writing - original "
+                "draft. Jian Xie: Data curation. Fan Yang: Conceptualization."
             ),
             "",
             (
                 "**Declaration of generative AI and AI-assisted technologies in the "
-                "manuscript preparation process.** [AUTHOR TO CONFIRM AND FINALIZE. "
-                "The working draft used OpenAI Codex for language editing, "
-                "document consistency checks, and reproducibility checks. The "
-                "authors must review and edit the text and take full responsibility "
-                "for the published article.]"
+                "manuscript preparation process.** "
+                f"{AI_STATEMENT}"
             ),
+            "",
+            (
+                "**Ethics approval and consent to participate.** This study "
+                "reanalyzed existing soil microbial sequencing data from a field "
+                "experiment and publicly available, de-identified human gut "
+                "microbiome datasets. No new human participants or animals were "
+                "involved."
+            ),
+            "",
+            "**Consent for publication.** Not applicable.",
             "",
             "# References",
             "",
@@ -645,15 +684,29 @@ def build_title_page():
     for label, value in [
         ("Article type", "Research Article"),
         ("Journal", "Journal of Microbiological Methods"),
-        ("Author 1", "[GIVEN NAME FAMILY NAME, AFFILIATION MARKER]"),
-        ("Author 2", "[GIVEN NAME FAMILY NAME, AFFILIATION MARKER]"),
-        ("Additional authors", "[ADD OR REMOVE AUTHOR ROWS BEFORE SUBMISSION]"),
-        ("Affiliation a", "[FULL INSTITUTION, DEPARTMENT, POSTAL ADDRESS, COUNTRY]"),
+        ("Authors", "ZiWei Tao (a); Jian Xie (a); Fan Yang (b)"),
+        (
+            "Affiliation a",
+            "Guangxi University of Science and Technology, Guangxi Colleges and "
+            "Universities Key Laboratory of Intelligent Computing and Distributed "
+            "Information Processing, 2 Wenchang Road, Chengzhong District, "
+            "Liuzhou, Guangxi 545006, China",
+        ),
+        (
+            "Affiliation b",
+            "Zhejiang University of Water Resources and Electric Power, 508 No. 2 "
+            "Street, Xiasha Higher Education Park, Qiantang District, Hangzhou, "
+            "Zhejiang 310018, China",
+        ),
         (
             "Corresponding author",
-            "[NAME, EMAIL ADDRESS, TELEPHONE, FULL POSTAL ADDRESS]",
+            "ZiWei Tao",
         ),
-        ("ORCID", "[ORCID FOR EACH AUTHOR, WHERE AVAILABLE]"),
+        ("Email", "taozw@gxust.edu.cn"),
+        ("Telephone", "[TELEPHONE REQUIRED IN SUBMISSION SYSTEM]"),
+        ("Postal address", AFFILIATIONS["a"]),
+        ("Author email addresses", "taozw@gxust.edu.cn; guangxixiejian@gxust.edu.cn; 489486943@qq.com"),
+        ("ORCID", "ZiWei Tao: 0000-0003-0310-748X"),
         ("Abstract word count", str(count_words(JMM_ABSTRACT))),
         ("Keywords", f"{len(KEYWORDS)}"),
         ("Review model", "Single anonymized"),
@@ -667,7 +720,7 @@ def build_cover_letter():
     title = doc.add_paragraph(style="Title")
     run = title.add_run("Cover letter")
     set_font(run, "Arial", 20, bold=True)
-    add_label_value(doc, "Date", "30 October 2026")
+    add_label_value(doc, "Date", "31 October 2026")
     add_label_value(doc, "To", "The Editors, Journal of Microbiological Methods")
 
     paragraphs = [
@@ -704,12 +757,16 @@ def build_cover_letter():
         ),
         (
             "The manuscript is not published or under consideration elsewhere. "
-            "All authors will approve the submitted version. The corresponding "
-            "author will complete the declarations tool, CRediT statement, funding "
-            "statement, repository identifiers, and license before submission."
+            "All authors have reviewed and approved the submitted version. The "
+            "authors report no competing interests and no specific funding support."
         ),
         "Sincerely,",
-        "[CORRESPONDING AUTHOR NAME, AFFILIATION, EMAIL]",
+        (
+            "ZiWei Tao (Corresponding author)\n"
+            "Guangxi University of Science and Technology\n"
+            "taozw@gxust.edu.cn\n"
+            "ORCID: 0000-0003-0310-748X"
+        ),
     ]
     for text in paragraphs:
         add_markdown_paragraph(doc, text)
@@ -723,65 +780,45 @@ def build_declarations():
     set_font(run, "Arial", 20, bold=True)
 
     doc.add_heading("CRediT author statement", level=1)
-    doc.add_paragraph(
-        "Complete one row per author. Remove roles that do not apply."
-    )
-    roles = [
-        "Conceptualization",
-        "Data curation",
-        "Formal analysis",
-        "Funding acquisition",
-        "Investigation",
-        "Methodology",
-        "Project administration",
-        "Resources",
-        "Software",
-        "Supervision",
-        "Validation",
-        "Visualization",
-        "Writing - original draft",
-        "Writing - review and editing",
-    ]
-    for role in roles:
+    for text in (
+        "ZiWei Tao: Writing - original draft.",
+        "Jian Xie: Data curation.",
+        "Fan Yang: Conceptualization.",
+    ):
         paragraph = doc.add_paragraph(style="List Bullet")
-        paragraph.add_run(f"{role}: ").bold = True
-        paragraph.add_run("[AUTHOR INITIALS]")
+        paragraph.add_run(text)
 
     doc.add_heading("Funding", level=1)
     doc.add_paragraph(
-        "Funding: [LIST FUNDER, CITY, COUNTRY, GRANT NUMBER]. If no funding was "
-        "received, use: This research did not receive any specific grant from "
-        "funding agencies in the public, commercial, or not-for-profit sectors."
+        "This research did not receive any specific grant from funding agencies "
+        "in the public, commercial, or not-for-profit sectors."
     )
 
     doc.add_heading("Declaration of competing interest", level=1)
-    doc.add_paragraph(
-        "[COMPLETE THE ELSEVIER DECLARATIONS TOOL AND INSERT THE GENERATED "
-        "STATEMENT HERE. IF NONE: The authors declare that they have no known "
-        "competing financial interests or personal relationships that could have "
-        "appeared to influence the work reported in this paper.]"
-    )
+    doc.add_paragraph(COI_STATEMENT)
 
     doc.add_heading("Data and code availability", level=1)
     doc.add_paragraph(
-        f"Data release: {DATA_RELEASE_URL}; DOI [TO BE INSERTED]. "
-        f"Code release: {CODE_RELEASE_URL}; DOI [TO BE INSERTED]. "
-        "Code license: MIT. Data license: CC BY 4.0. Sequencing accession "
-        "or archive identifier: [TO BE INSERTED]."
+        f"Data release: {DATA_RELEASE_URL}. "
+        f"Code release: {CODE_RELEASE_URL}. "
+        "Code license: MIT. Data license: CC BY 4.0. "
+        "Raw sequencing reads are available from the corresponding author on "
+        "reasonable request because the original sequencing archive did not "
+        "provide a stable public accession."
     )
 
     doc.add_heading("Generative AI declaration", level=1)
+    doc.add_paragraph(AI_STATEMENT)
+
+    doc.add_heading("Ethics approval and consent to participate", level=1)
     doc.add_paragraph(
-        "During the preparation of this work, the author(s) used [TOOL/SERVICE] "
-        "to [REASON]. After using this tool/service, the author(s) reviewed and "
-        "edited the content as needed and take(s) full responsibility for the "
-        "content of the published article."
+        "This study reanalyzed existing soil microbial sequencing data from a "
+        "field experiment and publicly available, de-identified human gut "
+        "microbiome datasets. No new human participants or animals were involved."
     )
-    doc.add_paragraph(
-        "Working draft disclosure to verify: OpenAI Codex was used for language "
-        "editing, document consistency checks, and reproducibility checks. "
-        "Confirm the exact product name, scope, and dates before submission."
-    )
+
+    doc.add_heading("Consent for publication", level=1)
+    doc.add_paragraph("Not applicable.")
     save_doc(doc, DECLARATION_DIR / "JMM_Declarations_and_CRediT.docx")
 
 
@@ -812,7 +849,7 @@ def write_support_files(main_markdown: str, supplement_markdown: str):
             [
                 "# JMM author-guide audit",
                 "",
-                "Source: ScienceDirect Guide for Authors for Journal of Microbiological Methods, accessed 29 October 2026.",
+                "Source: ScienceDirect Guide for Authors for Journal of Microbiological Methods, accessed 31 October 2026.",
                 "",
                 "| Requirement | Current package | Status |",
                 "| --- | --- | --- |",
@@ -825,11 +862,11 @@ def write_support_files(main_markdown: str, supplement_markdown: str):
                 "| Tables editable, no vertical rules or shading | Tables are native Word tables with horizontal rules only | PASS |",
                 "| Figures supplied separately | Figure 1, Figure 2, Figure 3, and Figure S1 are separate PDF files | PASS |",
                 "| Figure captions | Captions are present in the manuscript and supplementary material | PASS |",
-                "| Data are deposited and cited | Public v1.0.0 data release exists; permanent DOI remains to be added | PARTIAL |",
-                "| Title page with authors, affiliations, corresponding email | Structured title page supplied with placeholders | AUTHOR ACTION REQUIRED |",
-                "| CRediT statement | Structured template supplied | AUTHOR ACTION REQUIRED |",
-                "| Funding and competing-interest declarations | Templates supplied; Elsevier declarations tool still required | AUTHOR ACTION REQUIRED |",
-                "| Generative-AI declaration | Draft disclosure supplied for author confirmation | AUTHOR ACTION REQUIRED |",
+                "| Data are deposited and cited | Public v1.0.0 data discovery release and v0.3.0 code release are cited; raw reads use the journal's documented access exception | PASS WITH NOTE |",
+                "| Title page with authors, affiliations, corresponding email | Names, order, affiliations, email, postal addresses, and ORCID supplied | PASS EXCEPT TELEPHONE |",
+                "| CRediT statement | Completed from the supplied author contribution text | PASS |",
+                "| Funding and competing-interest declarations | Statements completed; Elsevier declarations tool still requires entry | AUTHOR ACTION REQUIRED |",
+                "| Generative-AI declaration | Supplied author statement inserted verbatim | PASS |",
                 "| Open-access choice | Use subscription route if no APC is available | AUTHOR ACTION REQUIRED |",
                 "",
             ]
@@ -840,21 +877,16 @@ def write_support_files(main_markdown: str, supplement_markdown: str):
     (AUDIT_DIR / "Author_Action_Required.md").write_text(
         """# Author action required before submission
 
-1. Enter the final author list and order, full affiliations, corresponding
-   author email, telephone number, full postal address, and ORCID identifiers.
-2. If required by the journal or institution, archive the public GitHub
-   releases in Zenodo and insert the assigned DOI. The public releases are
-   already available at the URLs in the manuscript.
-3. Insert the sequencing accession or archive identifier for raw reads.
-4. Complete the Elsevier declarations tool and upload the generated DOCX.
-5. Complete the CRediT statement for every author.
-6. Confirm funding and acknowledgement text.
-7. Confirm and finalize the generative-AI disclosure.
-8. At submission, choose the subscription route if the requirement is zero
+1. Enter the corresponding-author telephone number in the submission system
+   and title page.
+2. Enter the completed statements in Elsevier's declarations tool and upload
+   the generated declaration document.
+3. All authors should confirm the final author order, CRediT roles, funding
+   statement, competing-interest statement, and generative-AI statement.
+4. At submission, choose the subscription route if the requirement is zero
    author payment. Do not select gold open access unless an APC is funded.
-9. Optionally provide suggested reviewers and opposed reviewers.
-10. Run a final spelling and reference check after the identifiers and author
-    information are inserted.
+5. Optionally provide suggested reviewers and opposed reviewers.
+6. Run a final spelling and reference check in the submission system.
 """,
         encoding="utf-8",
     )
@@ -871,10 +903,10 @@ The package also includes the `claimstab` 0.3.0 wheel and source archives.
 
 Before submission:
 
-1. Archive both GitHub releases in Zenodo if a DOI is required.
-2. Insert the DOI and raw-read accession in
-   `01_Manuscript/JMM_Manuscript_Anonymous.docx` and
-   `06_Declarations_and_CRediT/JMM_Declarations_and_CRediT.docx`.
+1. Archive both GitHub releases in Zenodo only if the journal, institution, or
+   funder requires a DOI in addition to the versioned GitHub release.
+2. Raw sequencing reads are available from the corresponding author on
+   reasonable request, as stated in the manuscript and declarations.
 """,
         encoding="utf-8",
     )
@@ -910,7 +942,7 @@ Before submission:
     lines = [
         "# JMM submission package manifest",
         "",
-        "Generated 30 October 2026.",
+        "Generated 31 October 2026.",
         "",
         "| File | Purpose | Size | SHA256 |",
         "| --- | --- | ---: | --- |",
@@ -953,9 +985,10 @@ Before submission:
                 "- Anonymous manuscript plus a separate title page.",
                 "- Single-column editable DOCX source files.",
                 "",
-                "This package is not submission-ready until the repository DOI,",
-                "license, author details, declarations, CRediT roles, funding, and",
-                "AI-use statement are completed.",
+                "Submission remains blocked only by the corresponding-author",
+                "telephone number, entry of the prepared statements in Elsevier's",
+                "declarations tool, and the author's choice of subscription versus",
+                "funded open access.",
                 "",
             ]
         ),

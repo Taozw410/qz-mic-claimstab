@@ -85,7 +85,7 @@ Rscript 12_assign_its_unite.R \
 Windows R读取中文路径可能失败，因此输入和输出先使用ASCII临时目录，运行后再
 由PowerShell复制到项目正式目录。
 
-说明：脚本中的 `C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2` 是本次分析的 ASCII 工作目录。正式重跑时应根据新环境修改输入和输出根路径，但不应改变随机种子、抽平深度或统计口径。
+说明：脚本中的 `C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2` 是本次分析的 ASCII 工作目录。正式重跑时应根据新环境修改输入和输出根路径，但不应改变随机种子、抽平深度或统计口径。
 
 `09`–`11` 已改为直接读取论文2目录下的正式 ASV 与结果文件，不依赖 ASCII
 临时目录。建议重跑顺序：

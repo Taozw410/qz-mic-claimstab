@@ -16,13 +16,13 @@ from scipy.stats import f_oneway, spearmanr, ttest_ind
 from statsmodels.stats.multitest import multipletests
 
 sys.path.append(
-    r"C:\Users\hthome\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages"
+    r"C:\Users\<local-user>\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\site-packages"
 )
 
 
 ROOT = Path("D:/CodexWork/QZ-mic")
 RAW = ROOT / "数据" / "原始数据"
-OUT = Path("C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2/out/prelim")
+OUT = Path("C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2/out/prelim")
 OUT.mkdir(parents=True, exist_ok=True)
 
 GROUP_MAP = {

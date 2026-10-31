@@ -8,7 +8,7 @@ import pandas as pd
 
 
 ROOT = Path("D:/CodexWork/QZ-mic/数据/原始数据")
-OUT = Path("C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2/out/network_audit")
+OUT = Path("C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2/out/network_audit")
 OUT.mkdir(parents=True, exist_ok=True)
 
 

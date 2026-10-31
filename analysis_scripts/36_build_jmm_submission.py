@@ -450,8 +450,9 @@ def build_jmm_markdown(blocks: dict[str, list[str]]) -> tuple[str, str]:
             f"**Declaration of competing interest.** {COI_STATEMENT}",
             "",
             (
-                "**CRediT author statement.** ZiWei Tao: Writing - original "
-                "draft. Jian Xie: Data curation. Fan Yang: Conceptualization."
+                "**CRediT author statement.** The complete statement with author "
+                "names is supplied in the separate author declarations file to "
+                "preserve anonymity during review."
             ),
             "",
             (
@@ -881,12 +882,15 @@ def write_support_files(main_markdown: str, supplement_markdown: str):
    and title page.
 2. Enter the completed statements in Elsevier's declarations tool and upload
    the generated declaration document.
-3. All authors should confirm the final author order, CRediT roles, funding
+3. For strict single-anonymized review, replace the GitHub release URLs in the
+   manuscript with an anonymized repository or permanent DOI before upload, or
+   confirm that the journal permits stable repository links in the review copy.
+4. All authors should confirm the final author order, CRediT roles, funding
    statement, competing-interest statement, and generative-AI statement.
-4. At submission, choose the subscription route if the requirement is zero
+5. At submission, choose the subscription route if the requirement is zero
    author payment. Do not select gold open access unless an APC is funded.
-5. Optionally provide suggested reviewers and opposed reviewers.
-6. Run a final spelling and reference check in the submission system.
+6. Optionally provide suggested reviewers and opposed reviewers.
+7. Run a final spelling and reference check in the submission system.
 """,
         encoding="utf-8",
     )
@@ -985,10 +989,11 @@ Before submission:
                 "- Anonymous manuscript plus a separate title page.",
                 "- Single-column editable DOCX source files.",
                 "",
-                "Submission remains blocked only by the corresponding-author",
-                "telephone number, entry of the prepared statements in Elsevier's",
-                "declarations tool, and the author's choice of subscription versus",
-                "funded open access.",
+                "Submission remains blocked by the corresponding-author telephone",
+                "number, an anonymized repository or DOI for the single-anonymized",
+                "review copy if required, entry of the prepared statements in",
+                "Elsevier's declarations tool, and the author's choice of",
+                "subscription versus funded open access.",
                 "",
             ]
         ),

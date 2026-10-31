@@ -10,7 +10,7 @@ if (length(args) != 2) {
 start_index <- as.integer(args[1])
 end_index <- as.integer(args[2])
 
-root <- "C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2"
+root <- "C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2"
 domain_dir <- file.path(root, "out", "asv", "338F_806R")
 filtered_dir <- file.path(domain_dir, "filtered")
 files <- sort(list.files(filtered_dir, pattern = "\\.filt\\.fastq\\.gz$", full.names = TRUE))

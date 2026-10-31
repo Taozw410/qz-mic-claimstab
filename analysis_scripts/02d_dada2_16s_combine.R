@@ -4,7 +4,7 @@ suppressPackageStartupMessages({
   library(Biostrings)
 })
 
-root <- "C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2"
+root <- "C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2"
 domain_dir <- file.path(root, "out", "asv", "338F_806R")
 chunk_paths <- file.path(domain_dir, c("chunk_1_6.rds", "chunk_7_12.rds", "chunk_13_18.rds"))
 stopifnot(all(file.exists(chunk_paths)))

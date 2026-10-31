@@ -6,7 +6,7 @@ suppressPackageStartupMessages({
 
 set.seed(20261023)
 
-root <- "C:/Users/hthome/AppData/Local/Temp/qz_mic_paper2"
+root <- "C:/Users/<local-user>/AppData/Local/Temp/qz_mic_paper2"
 out_dir <- file.path(root, "out", "asv", "ITS1F_ITS2R")
 filtered_dir <- file.path(out_dir, "filtered")
 dir.create(filtered_dir, recursive = TRUE, showWarnings = FALSE)

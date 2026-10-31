@@ -514,6 +514,8 @@ def main():
             "  submission, focusing on table page breaks and the landscape",
             "  supplementary table.",
             "",
+            "## Remaining author actions",
+            "",
             "- Enter the prepared competing-interest, funding, CRediT, and",
             "  generative-AI statements in Elsevier's declarations tool.",
             "- Confirm the final author order and all author approvals.",

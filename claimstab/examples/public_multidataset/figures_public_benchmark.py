@@ -14,7 +14,7 @@ import numpy as np
 
 
 SKILL_SCRIPTS = Path(
-    r"C:\Users\hthome\.codex\skills\nature-figure\scripts"
+    r"C:\Users\<local-user>\.codex\skills\nature-figure\scripts"
 )
 sys.path.insert(0, str(SKILL_SCRIPTS))
 from audit_panel_alignment import require_matplotlib_panel_alignment

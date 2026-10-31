@@ -92,6 +92,12 @@ def audit_docx(path: Path, manuscript: bool):
         result["embedded_object_count"] = len(
             re.findall(r"<w:object(?:\s|>)", document_xml)
         )
+        result["underline_count"] = len(
+            re.findall(r'<w:u(?:\s+[^>]*)?w:val="(?!none")', document_xml)
+        )
+        result["strikethrough_count"] = len(
+            re.findall(r"<w:strike(?:\s|/>)", document_xml)
+        )
         result["embedded_parts"] = [
             name
             for name in names
@@ -286,6 +292,17 @@ def main():
         "no_embedded_objects_or_macros": all(
             item["embedded_object_count"] == 0
             and not item["embedded_parts"]
+            for item in (
+                manuscript,
+                title_page,
+                cover_letter,
+                supplement,
+                declarations,
+            )
+        ),
+        "no_underline_or_strikethrough": all(
+            item["underline_count"] == 0
+            and item["strikethrough_count"] == 0
             for item in (
                 manuscript,
                 title_page,

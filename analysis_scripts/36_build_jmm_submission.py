@@ -428,9 +428,9 @@ def build_jmm_markdown(blocks: dict[str, list[str]]) -> tuple[str, str]:
                 "results, and SHA256 manifest are available in the versioned "
                 f"data release at {DATA_RELEASE_URL}. The four public datasets "
                 "are identified in Section 2 and in the reference list. Raw "
-                "sequencing reads are available from the corresponding author "
-                "on reasonable request because the original sequencing archive "
-                "did not provide a stable public accession."
+                "sequencing reads were not duplicated in the analysis repository "
+                "because of data-volume constraints and are available from the "
+                "corresponding author on reasonable request."
             ),
             "",
             (
@@ -473,7 +473,7 @@ def build_jmm_markdown(blocks: dict[str, list[str]]) -> tuple[str, str]:
             "",
             "# References",
             "",
-            *[line for line in blocks["References"] if line.strip()],
+            *blocks["References"],
             "",
             "# Tables",
             "",
@@ -541,6 +541,7 @@ def add_markdown_body(
 ):
     lines = markdown.splitlines()
     paragraph_buffer: list[str] = []
+    references_mode = False
 
     def flush():
         nonlocal paragraph_buffer
@@ -548,7 +549,16 @@ def add_markdown_body(
             return
         text = re.sub(r"\s+", " ", " ".join(paragraph_buffer)).strip()
         if text:
-            add_markdown_paragraph(doc, text)
+            if references_mode:
+                paragraph = doc.add_paragraph()
+                paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+                paragraph.paragraph_format.left_indent = Cm(0.5)
+                paragraph.paragraph_format.first_line_indent = Cm(-0.5)
+                paragraph.paragraph_format.space_after = Pt(3.5)
+                paragraph.paragraph_format.line_spacing = 1.0
+                GB.add_inline_markdown(paragraph, text, size=10.0)
+            else:
+                add_markdown_paragraph(doc, text)
         paragraph_buffer = []
 
     i = 0
@@ -562,7 +572,11 @@ def add_markdown_body(
         if stripped.startswith("# "):
             flush()
             heading = stripped[2:].strip()
-            if heading not in {"References", "Tables", "Figure captions"}:
+            references_mode = heading == "References"
+            if heading == "Tables":
+                i += 1
+                continue
+            if heading not in {"References", "Figure captions"}:
                 title = doc.add_paragraph(style="Title")
                 title.alignment = WD_ALIGN_PARAGRAPH.LEFT
                 run = title.add_run(heading)
@@ -570,8 +584,6 @@ def add_markdown_body(
             else:
                 doc.add_page_break()
                 doc.add_heading(heading, level=1)
-                if heading == "References":
-                    GB.mod_references_mode = True
             i += 1
             continue
 
@@ -602,15 +614,6 @@ def add_markdown_body(
             alignments = GB.infer_alignments(separator_line, len(rows[0]))
             GB.add_table(doc, rows, alignments, landscape=landscape)
             i = next_i
-            continue
-
-        if "References" in markdown and i > markdown.splitlines().index("# References"):
-            paragraph = doc.add_paragraph()
-            paragraph.paragraph_format.left_indent = Cm(0.65)
-            paragraph.paragraph_format.first_line_indent = Cm(-0.65)
-            paragraph.paragraph_format.space_after = Pt(4)
-            GB.add_inline_markdown(paragraph, stripped, size=9.4)
-            i += 1
             continue
 
         paragraph_buffer.append(stripped)
@@ -721,7 +724,7 @@ def build_cover_letter():
     title = doc.add_paragraph(style="Title")
     run = title.add_run("Cover letter")
     set_font(run, "Arial", 20, bold=True)
-    add_label_value(doc, "Date", "31 October 2026")
+    add_label_value(doc, "Date", "1 November 2026")
     add_label_value(doc, "To", "The Editors, Journal of Microbiological Methods")
 
     paragraphs = [
@@ -762,15 +765,21 @@ def build_cover_letter():
             "authors report no competing interests and no specific funding support."
         ),
         "Sincerely,",
-        (
-            "ZiWei Tao (Corresponding author)\n"
-            "Guangxi University of Science and Technology\n"
-            "taozw@gxust.edu.cn\n"
-            "ORCID: 0000-0003-0310-748X"
-        ),
     ]
     for text in paragraphs:
         add_markdown_paragraph(doc, text)
+    for text in (
+        "ZiWei Tao",
+        "Corresponding author",
+        "Guangxi University of Science and Technology",
+        "taozw@gxust.edu.cn",
+        "ORCID: 0000-0003-0310-748X",
+    ):
+        paragraph = doc.add_paragraph()
+        paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        paragraph.paragraph_format.space_after = Pt(1)
+        add_inline = paragraph.add_run(text)
+        set_font(add_inline, "Times New Roman", 11)
     save_doc(doc, COVER_DIR / "JMM_Cover_Letter.docx")
 
 
@@ -803,9 +812,9 @@ def build_declarations():
         f"Data release: {DATA_RELEASE_URL}. "
         f"Code release: {CODE_RELEASE_URL}. "
         "Code license: MIT. Data license: CC BY 4.0. "
-        "Raw sequencing reads are available from the corresponding author on "
-        "reasonable request because the original sequencing archive did not "
-        "provide a stable public accession."
+        "Raw sequencing reads were not duplicated in the analysis repository "
+        "because of data-volume constraints and are available from the "
+        "corresponding author on reasonable request."
     )
 
     doc.add_heading("Generative AI declaration", level=1)
@@ -946,7 +955,7 @@ Before submission:
     lines = [
         "# JMM submission package manifest",
         "",
-        "Generated 31 October 2026.",
+        "Generated 1 November 2026.",
         "",
         "| File | Purpose | Size | SHA256 |",
         "| --- | --- | ---: | --- |",

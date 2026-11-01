@@ -109,6 +109,45 @@ def audit_docx(path: Path, manuscript: bool):
         abstract = paragraph_after(doc, "Abstract", "Keywords")
         keywords_text = paragraph_after(doc, "Keywords", "1. Introduction")
         all_text = "\n".join(p.text for p in doc.paragraphs)
+        reference_start = next(
+            index
+            for index, paragraph in enumerate(doc.paragraphs)
+            if paragraph.text.strip() == "References"
+        )
+        table_start = next(
+            index
+            for index, paragraph in enumerate(doc.paragraphs)
+            if paragraph.text.strip().startswith("Table 1.")
+        )
+        body_paragraphs = doc.paragraphs[:reference_start]
+        reference_paragraphs = [
+            paragraph
+            for paragraph in doc.paragraphs[reference_start + 1 : table_start]
+            if paragraph.text.strip()
+        ]
+        body_fonts = set()
+        reference_fonts = set()
+        for paragraph in body_paragraphs:
+            if paragraph.style.name.startswith("Heading") or paragraph.style.name == "Title":
+                continue
+            for run in paragraph.runs:
+                if run.text:
+                    body_fonts.add(
+                        run.font.name
+                        or paragraph.style.font.name
+                        or doc.styles["Normal"].font.name
+                    )
+        for paragraph in reference_paragraphs:
+            for run in paragraph.runs:
+                if run.text:
+                    reference_fonts.add(
+                        run.font.name
+                        or paragraph.style.font.name
+                        or doc.styles["Normal"].font.name
+                    )
+        result["body_fonts"] = sorted(body_fonts)
+        result["reference_fonts"] = sorted(reference_fonts)
+        result["reference_paragraphs"] = len(reference_paragraphs)
         result["abstract_words"] = word_count(abstract)
         result["keywords"] = [
             value.strip()
@@ -236,6 +275,15 @@ def main():
         "abstract_under_250": manuscript["abstract_words"] <= 250,
         "keywords_1_to_7": 1 <= len(manuscript["keywords"]) <= 7,
         "numbered_sections": manuscript["numbered_sections"],
+        "body_font_uniform": manuscript["body_fonts"] == [
+            "Times New Roman"
+        ],
+        "references_font_uniform": (
+            manuscript["reference_fonts"] == ["Times New Roman"]
+        ),
+        "references_are_compact_paragraphs": (
+            manuscript["reference_paragraphs"] == 27
+        ),
         "line_numbering_each_section": (
             manuscript["line_number_rule_count"] == manuscript["sections"]
             and supplement["line_number_rule_count"] == supplement["sections"]

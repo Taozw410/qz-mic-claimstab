@@ -89,7 +89,7 @@ def add_inline_markdown(paragraph, text: str, size: float = BODY_SIZE):
         token = match.group(0)
         if token.startswith("`") and token.endswith("`"):
             run = paragraph.add_run(token[1:-1])
-            set_run_font(run, "Courier New", max(8.5, size - 0.8))
+            set_run_font(run, BODY_FONT, size)
         elif token.startswith("**") and token.endswith("**"):
             run = paragraph.add_run(token[2:-2])
             set_run_font(run, BODY_FONT, size, bold=True)
@@ -292,6 +292,8 @@ def add_table(doc: Document, rows: list[str], alignments, landscape: bool):
             0.70,
             0.65,
         ]
+    elif columns == 7 and headers[0] == "Layer":
+        special_widths = [1.20, 1.05, 1.15, 0.62, 0.82, 1.08, 1.08]
     elif columns == 11 and headers[0] == "Domain":
         special_widths = [
             0.65, 0.95, 0.75, 0.85, 0.85, 0.85, 0.85, 0.95, 0.90, 0.65, 0.65
@@ -303,11 +305,11 @@ def add_table(doc: Document, rows: list[str], alignments, landscape: bool):
     elif columns == 6 and headers[0] == "ID":
         special_widths = [0.55, 2.00, 1.15, 1.45, 2.65, 2.05]
     elif columns == 6 and headers[0] == "Domain":
-        special_widths = [0.70, 2.05, 1.35, 1.50, 1.35, 2.65]
+        special_widths = [0.58, 1.55, 0.95, 0.95, 0.95, 1.52]
     elif columns == 7 and headers[0] == "Dataset":
         special_widths = [1.15, 1.65, 0.58, 0.92, 0.88, 0.98, 1.35]
     elif columns == 7 and headers[0] == "Dataset and claim":
-        special_widths = [2.15, 0.95, 0.90, 0.80, 0.90, 0.75, 3.45]
+        special_widths = [1.58, 0.69, 0.92, 0.88, 0.62, 0.48, 1.33]
     if special_widths:
         scale = available_width / sum(special_widths)
         widths = [value * scale for value in special_widths]

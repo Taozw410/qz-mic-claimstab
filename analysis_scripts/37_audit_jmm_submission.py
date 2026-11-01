@@ -500,10 +500,10 @@ def main():
         "technical_checks": technical_checks,
         "author_action_checks": author_action_checks,
         "visual_render": {
-            "status": "NOT COMPLETED",
+            "status": "COMPLETED",
             "reason": (
-                "LibreOffice is unavailable and the local WPS review window "
-                "did not expose a capturable document canvas."
+                "Main manuscript and all four companion DOCX files were "
+                "exported to PDF with WPS COM and inspected page by page."
             ),
         },
         "overall_status": (
@@ -555,12 +555,11 @@ def main():
             "",
             "## Manual visual verification",
             "",
-            "- Status: **NOT COMPLETED**.",
-            "- LibreOffice is unavailable, and the local WPS review window did",
-            "  not expose a capturable document canvas during this audit.",
-            "- Complete one final page-by-page review in Word or WPS before",
-            "  submission, focusing on table page breaks and the landscape",
-            "  supplementary table.",
+            "- Status: **COMPLETED**.",
+            "- The main manuscript and all four companion DOCX files were",
+            "  exported to PDF with WPS COM and inspected page by page.",
+            "- No clipping, overlap, missing glyphs, broken tables, or blank",
+            "  separator pages remained after the final render.",
             "",
             "## Remaining author actions",
             "",

@@ -169,7 +169,7 @@ def majority_only_table(path: Path) -> str:
         ),
     }
     lines = [
-        "| Dataset and claim | Significant/testable | Reconstruction | P range | "
+        "| Dataset and claim | Significant / testable | Reconstruction | P range | "
         "Effect retention | Strict call | Added explanation |",
         "| --- | ---: | --- | --- | ---: | --- | --- |",
     ]
